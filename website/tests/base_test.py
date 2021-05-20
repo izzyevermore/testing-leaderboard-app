@@ -8,19 +8,19 @@ and makes sure that it is a new, blank database each time.
 
 from unittest import TestCase
 from main import app
-from website import db, DB_NAME
+from website import db
 
 
 class BaseTest(TestCase):
     def setup(self):
         # make sure database exists
-        app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{DB_NAME}'
+        app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
         with app.app_context():
             db.init_app(app)
             db.create_all()
         # Get a test client
         self.app = app.test_client()
-        self.app_context = app.app_context()
+        self.app_context = app.app_context
 
     def tearDown(self):
         #Database is blank
