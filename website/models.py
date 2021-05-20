@@ -34,6 +34,7 @@ class User(db.Model, UserMixin):
     work = db.relationship('Work') # store all work user has
     points = db.Column(db.Integer)
 
+
 # teams table
 class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
