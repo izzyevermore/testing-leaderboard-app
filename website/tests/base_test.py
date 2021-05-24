@@ -10,22 +10,24 @@ from unittest import TestCase
 from main import app
 from website import db
 
-
+# This class tests if models can be saved and deleted from the database
 class BaseTest(TestCase):
-    def setup(self):
-        # make sure database exists
+    def setUp(self):
+        # Making sure the database exists
         app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///'
         with app.app_context():
             db.init_app(app)
             db.create_all()
-        # Get a test client
+        # This gets a test client
         self.app = app.test_client()
         self.app_context = app.app_context
 
+
+    #This runs after each function
     def tearDown(self):
-        #Database is blank
-        with app.app_context():
-            db.session.remove()
-            db.drop_all()
+      #Database is blank
+      with app.app_context():
+          db.session.remove()
+          db.drop_all()
 
 
