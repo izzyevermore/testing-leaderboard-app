@@ -13,9 +13,9 @@ x successfully add user (integration)
 LOG IN
 x test response when loading page - should be valid irrespective of user (unit)
 x test that page returns with correct data (unit)
-- test for log in with valid user (correct name, correct password) (integration)
-- test for log in with non-existing user (integration)
-- test for log in with valid user, wrong password (integration)
+x test for log in with valid user (correct name, correct password) (integration)
+x test for log in with non-existing user (integration)
+x test for log in with valid user, wrong password (integration)
 
 
 LOG OUT
