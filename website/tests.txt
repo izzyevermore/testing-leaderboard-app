@@ -19,9 +19,9 @@ x test for log in with valid user, wrong password (integration)
 
 
 LOG OUT
-- test that route is accessed if user is logged in ( integration )
-- test that route cant be accessed if user is not logged in (unit)
-- test response code when user navigates to page ( logged in ) (integration)
-- test response code when user navigates to page ( not logged in ) (unit)
+x test that route is accessed if user is logged in ( integration )
+x test that route cant be accessed if user is not logged in (unit)
+x test response code when user navigates to page ( logged in ) (integration)
+x test response code when user navigates to page ( not logged in ) (unit)
 - test that current_user is none after logging out (integration)
 - test that user is redirected to login page after log out ( integration )
