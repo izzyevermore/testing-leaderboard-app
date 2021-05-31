@@ -38,5 +38,25 @@ class TestLogout(BaseTest):
     def test_current_user_is_none_after_logging_out(self):
         with self.app:
             with self.app_context():
-                self.app.post('/sign-up')
+               self.app.post('/sign-up', data=dict(email='test@gmail.com', firstName='Tester', password1='testing', password2='testing')
+                            , follow_redirects=True)
+
+               self.assertTrue(current_user.is_active)
+
+               self.app.get('/log-out', follow_redirects=True)
+
+               self.assertFalse(current_user.is_active)
+
+    def test_user_is_redirected_to_login_page_after_log_out(self):
+        with self.app:
+            with self.app_context():
+                self.app.post('/sign-up', data=dict(email='test@gmail.com', firstName='Tester', password1='testing',
+                                                    password2='testing')
+                              , follow_redirects=True)
+
+                self.assertTrue(current_user.is_active)
+
+                response = self.app.get('/log-out', follow_redirects=True)
+
+                self.assertIn(b'<h3 align="center">Log in</h3>', response.data)
 
